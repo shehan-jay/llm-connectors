@@ -158,14 +158,6 @@
                     <altDeploymentRepository>central.manual.testing::default::https://central.sonatype.com/api/v1/publisher/upload</altDeploymentRepository>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <mainClass>com.llm.connectors.ChatGPTTest</mainClass>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
