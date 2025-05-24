@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Build the project
+mvn clean package -P release
+
+# Create a temporary directory for the bundle
+mkdir -p target/bundle
+
+# Copy all artifacts to the bundle directory
+cp target/*.jar target/bundle/
+cp target/*.jar.asc target/bundle/
+cp pom.xml target/bundle/
+cp pom.xml.asc target/bundle/
+
+# Create the bundle
+cd target/bundle
+zip -r ../central-bundle.zip *
+
+# Get the base64 encoded token
+TOKEN=$(printf "YOUR_USERNAME:YOUR_PASSWORD" | base64)
+
+# Upload the bundle
+curl --request POST \
+  --header "Authorization: Bearer $TOKEN" \
+  --form bundle=@../central-bundle.zip \
+  https://central.sonatype.com/api/v1/publisher/upload
+
+echo "Bundle uploaded. Check the Sonatype Central Portal for deployment status." 

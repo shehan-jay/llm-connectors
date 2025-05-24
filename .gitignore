@@ -23,6 +23,7 @@ settings.xml
 *.pem
 *.pub
 *.gpg
+deploy.sh
 
 # Test output
 /test-output/
