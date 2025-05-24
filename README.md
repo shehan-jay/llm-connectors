@@ -1,6 +1,12 @@
 # LLM Connectors
 
-A Java library providing connectors for popular AI platforms including ChatGPT, DeepSeek, Gemini, and Microsoft Copilot.
+<div align="center">
+  <img src="docs/images/logo.png" alt="LLM Connectors Logo" width="200"/>
+  <br/>
+  <em>Connect to multiple LLM platforms with ease</em>
+</div>
+
+A Java library providing connectors for popular AI platforms including ChatGPT and Gemini.
 
 ## Features
 
