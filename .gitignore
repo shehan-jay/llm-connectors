@@ -1,0 +1,34 @@
+# Maven build output
+/target/
+
+# Eclipse/IntelliJ IDEA project files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Sensitive files
+settings.xml
+*.key
+*.pem
+*.pub
+*.gpg
+
+# Test output
+/test-output/
+
+# Node/npm (if present)
+node_modules/
+
+# VSCode
+.vscode/ 
