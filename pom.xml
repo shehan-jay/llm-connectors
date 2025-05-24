@@ -6,7 +6,7 @@
 
     <groupId>io.github.shehan-jay</groupId>
     <artifactId>llm-connectors</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>LLM Connectors</name>
@@ -149,8 +149,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <skip>false</skip>
+                    <altDeploymentRepository>central.manual.testing::default::https://central.sonatype.com/api/v1/publisher/upload</altDeploymentRepository>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <!-- Distribution Management for Maven Central -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>central.manual.testing</id>
+            <url>https://central.sonatype.com/api/v1/publisher/upload</url>
+        </snapshotRepository>
+        <repository>
+            <id>central.manual.testing</id>
+            <url>https://central.sonatype.com/api/v1/publisher/upload</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>
