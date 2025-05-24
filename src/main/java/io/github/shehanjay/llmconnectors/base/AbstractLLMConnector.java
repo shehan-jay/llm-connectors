@@ -1,7 +1,7 @@
-package com.llm.connectors.base;
+package io.github.shehanjay.llmconnectors.base;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.llm.connectors.api.LLMConnector;
+import io.github.shehanjay.llmconnectors.api.LLMConnector;
 import okhttp3.OkHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

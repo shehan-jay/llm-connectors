@@ -1,10 +1,10 @@
-package com.llm.connectors.impl;
+package io.github.shehanjay.llmconnectors.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.llm.connectors.api.LLMConnector;
-import com.llm.connectors.base.AbstractLLMConnector;
+import io.github.shehanjay.llmconnectors.api.LLMConnector;
+import io.github.shehanjay.llmconnectors.base.AbstractLLMConnector;
 import okhttp3.*;
 
 import java.io.IOException;

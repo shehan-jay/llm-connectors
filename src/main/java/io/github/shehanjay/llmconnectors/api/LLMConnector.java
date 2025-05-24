@@ -1,4 +1,4 @@
-package com.llm.connectors.api;
+package io.github.shehanjay.llmconnectors.api;
 
 import java.util.List;
 import java.util.Map;

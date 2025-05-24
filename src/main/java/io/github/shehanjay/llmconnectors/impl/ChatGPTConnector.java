@@ -1,10 +1,10 @@
-package com.llm.connectors.impl;
+package io.github.shehanjay.llmconnectors.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.llm.connectors.api.LLMConnector;
-import com.llm.connectors.base.AbstractLLMConnector;
+import io.github.shehanjay.llmconnectors.api.LLMConnector;
+import io.github.shehanjay.llmconnectors.base.AbstractLLMConnector;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -13,14 +13,14 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Connector implementation for Microsoft Copilot API.
+ * Connector implementation for OpenAI's ChatGPT API.
  */
-public class CopilotConnector extends AbstractLLMConnector {
+public class ChatGPTConnector extends AbstractLLMConnector {
     private static final String API_VERSION = "v1";
     private static final String CHAT_ENDPOINT = "/chat/completions";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public CopilotConnector() {
+    public ChatGPTConnector() {
         super();
     }
 
@@ -29,10 +29,9 @@ public class CopilotConnector extends AbstractLLMConnector {
         validateInitialization();
         
         ObjectNode requestBody = objectMapper.createObjectNode()
-                .put("model", parameters.getOrDefault("model", "copilot-gpt-4").toString())
+                .put("model", parameters.getOrDefault("model", "gpt-3.5-turbo").toString())
                 .put("temperature", ((Number) parameters.getOrDefault("temperature", 0.7)).doubleValue())
-                .put("max_tokens", ((Number) parameters.getOrDefault("max_tokens", 1000)).intValue())
-                .put("top_p", ((Number) parameters.getOrDefault("top_p", 1.0)).doubleValue());
+                .put("max_tokens", ((Number) parameters.getOrDefault("max_tokens", 1000)).intValue());
 
         ArrayNode messages = requestBody.putArray("messages");
         messages.addObject()
@@ -47,10 +46,9 @@ public class CopilotConnector extends AbstractLLMConnector {
         validateInitialization();
         
         ObjectNode requestBody = objectMapper.createObjectNode()
-                .put("model", "copilot-gpt-4")
+                .put("model", "gpt-3.5-turbo")
                 .put("temperature", 0.7)
-                .put("max_tokens", 1000)
-                .put("top_p", 1.0);
+                .put("max_tokens", 1000);
 
         ArrayNode messagesArray = requestBody.putArray("messages");
         for (LLMConnector.Message message : messages) {
@@ -68,8 +66,6 @@ public class CopilotConnector extends AbstractLLMConnector {
         Request request = new Request.Builder()
                 .url(baseUrl + "/" + API_VERSION + CHAT_ENDPOINT)
                 .addHeader("Authorization", getAuthHeader())
-                .addHeader("Content-Type", "application/json")
-                .addHeader("api-version", API_VERSION)
                 .post(RequestBody.create(requestBody.toString(), JSON))
                 .build();
 
