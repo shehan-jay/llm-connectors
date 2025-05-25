@@ -6,7 +6,7 @@
   <em>Connect to multiple LLM platforms with ease</em>
 </div>
 
-A Java library providing connectors for popular AI platforms including ChatGPT and Gemini.
+A Java library providing connectors for popular AI platforms including ChatGPT, Copilot, Gemini, and DeepSeek.
 
 ## Features
 
